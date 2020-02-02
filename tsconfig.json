@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "plugins": [{
+      "name": "typescript-styled-plugin",
+      "validate": true,
+      "lint": {
+        "validProperties": ["font-smoothing"],
+        "emptyRules": "warning"
+      }
+    }],
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "typeRoots": ["./types", "./node_modules/@types/"]
+  },
+  "include": [
+    "src"
+  ]
+}
