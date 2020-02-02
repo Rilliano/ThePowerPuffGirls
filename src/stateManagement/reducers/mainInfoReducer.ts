@@ -8,18 +8,18 @@ export interface IImage {
 }
 
 export interface IMainInfo {
-  name?: string
-  type?: string
-  image?: IImage
-  summary?: string
+  name: string
+  type: string
+  image: IImage
+  summary: string
 }
 
 export interface IMainInfoState {
-  readonly payload: IMainInfo
+  readonly payload: undefined | IMainInfo
 }
 
 const initialMainInfoState: IMainInfoState = {
-  payload: {}
+  payload: undefined
 }
 
 export const mainInfoReducer: Reducer<IMainInfoState, IMainInfoAction> = (
