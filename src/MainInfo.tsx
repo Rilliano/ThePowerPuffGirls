@@ -1,16 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 
 //
 import { IMainInfo } from './stateManagement/reducers/mainInfoReducer'
+import { IEpisode } from './stateManagement/reducers/episodeListReducer'
 import { IAppState } from './stateManagement/reducers'
+import { getEpisodeList } from './stateManagement/actions'
 
 interface IProps {
-  mainInfo: IMainInfo
+  mainInfo: IMainInfo | undefined
+  episodeList: IEpisode[]
 }
 
-const MainInfo: React.FC<IProps> = ({ mainInfo }) => {
+const MainInfo: React.FC<IProps> = ({ mainInfo, episodeList }) => {
+  console.log('episodeList', episodeList)
+
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getEpisodeList())
+  }, [])
+
   return (
     <div>
       {mainInfo && (
@@ -30,7 +40,8 @@ const MainInfo: React.FC<IProps> = ({ mainInfo }) => {
 
 const mapStateToProps = (store: IAppState) => {
   return {
-    mainInfo: store.mainInfoState.payload
+    mainInfo: store.mainInfoState.payload,
+    episodeList: store.episodeListState.payload
   }
 }
 
