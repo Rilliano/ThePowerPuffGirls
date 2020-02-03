@@ -1,27 +1,36 @@
 import React from 'react'
-import logo from './logo.svg'
+
 import './App.css'
 import MainInfo from './MainInfo'
 
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+
+// Styles
+import GlobalStyle from './styles'
+
+const Episode = () => <div>episode</div>
+
 const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <MainInfo />
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <GlobalStyle />
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/episode/1">First Product</Link>
+          </li>
+          <li>
+            <Link to="/episode/2">Second Product</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <Route path="/" exact component={MainInfo} />
+      <Route path="/episode/:id" component={Episode} />
+    </Router>
   )
 }
 
