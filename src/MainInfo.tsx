@@ -18,7 +18,9 @@ const MainInfo: React.FC<IProps> = ({ mainInfo, episodeList }) => {
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getEpisodeList())
+    if (episodeList.length < 1) {
+      dispatch(getEpisodeList())
+    }
   }, [])
 
   return (
