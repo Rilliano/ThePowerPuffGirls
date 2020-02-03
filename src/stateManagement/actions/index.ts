@@ -1,5 +1,6 @@
 // Actions
 import { getMainInfo } from './mainInfoAction'
 import { getEpisodeList } from './episodeListAction'
+import { getSingleEpisode } from './singleEpisodeListAction'
 
-export { getMainInfo, getEpisodeList }
+export { getMainInfo, getEpisodeList, getSingleEpisode }

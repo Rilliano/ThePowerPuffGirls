@@ -1,22 +1,25 @@
 import React, { useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
+import styled from 'styled-components'
 
 // stateManagement
 import { IMainInfo } from '../stateManagement/reducers/mainInfoReducer'
-import { IEpisode } from '../stateManagement/reducers/episodeListReducer'
 import { getEpisodeList } from '../stateManagement/actions'
 import { IAppState } from '../stateManagement/reducers'
-import styled from 'styled-components'
-import RichText from '../components/RichText'
 
-interface IProps {
+// Components
+import RichText from '../components/RichText'
+import EpisodeList from '../components/EpisodeList'
+
+// Types
+import { IEpisode } from '../types'
+
+interface IHomeProps {
   mainInfo: IMainInfo | undefined
   episodeList: IEpisode[]
 }
 
-const Home: React.FC<IProps> = ({ mainInfo, episodeList }) => {
-  console.log('episodeList', episodeList)
-
+const Home: React.FC<IHomeProps> = ({ mainInfo, episodeList }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -30,19 +33,9 @@ const Home: React.FC<IProps> = ({ mainInfo, episodeList }) => {
       {mainInfo && (
         <InnerContainer>
           <Summery text={mainInfo.summary} />
-          {/* <header className="App-header">
-            {mainInfo.image && (
-              <img
-                src={mainInfo.image.medium}
-                className="App-logo"
-                alt="logo"
-              />
-            )}
-            {mainInfo.name}
-            <br />
-            <br />
-            {mainInfo.summary}
-          </header> */}
+          {episodeList && (
+            <EpisodeList title="Episode List" episodeList={episodeList} />
+          )}
         </InnerContainer>
       )}
     </Container>
@@ -64,9 +57,7 @@ const InnerContainer = styled.div`
   max-width: 900px;
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row;
+  flex-direction: column;
 `
 
 const Container = styled.header`

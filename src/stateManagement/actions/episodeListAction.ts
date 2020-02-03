@@ -3,7 +3,8 @@ import { ThunkAction } from 'redux-thunk'
 import axios from 'axios'
 
 // Types
-import { IEpisode, IEpisodeListState } from '../reducers/episodeListReducer'
+import { IEpisodeListState } from '../reducers/episodeListReducer'
+import { IEpisode } from '../../types'
 
 // Static
 import apiEndpoints from '../../static/apiEndpoints'
