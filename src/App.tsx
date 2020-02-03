@@ -1,18 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
-import './App.css'
-import MainInfo from './MainInfo'
-
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
-// Styles
-import GlobalStyle from './styles'
+// State Management
 import { IAppState } from './stateManagement/reducers'
-
-import Header from './components/Header'
-
 import { IMainInfo } from './stateManagement/reducers/mainInfoReducer'
+
+// Components
+import Header from './components/Header'
+import Home from './pageTypes/Home'
+
+// Styles
+import './App.css'
+import GlobalStyle from './styles'
 
 const Episode = () => <div>episode</div>
 
@@ -24,7 +24,6 @@ const App: React.FC<IProps> = ({ mainInfo }) => {
   return (
     <Router>
       <GlobalStyle />
-
       {mainInfo && (
         <>
           <Header name={mainInfo.name} image={mainInfo.image} />
@@ -44,7 +43,7 @@ const App: React.FC<IProps> = ({ mainInfo }) => {
         </>
       )}
 
-      <Route path="/" exact component={MainInfo} />
+      <Route path="/" exact component={Home} />
       <Route path="/episode/:id" component={Episode} />
     </Router>
   )
