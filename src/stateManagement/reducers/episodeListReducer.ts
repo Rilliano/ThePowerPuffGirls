@@ -4,16 +4,7 @@ import {
   EpisodeListActionTypes,
   IEpisodeListAction
 } from '../actions/episodeListAction'
-import { ApiImage } from '../../types'
-
-export interface IEpisode {
-  id: number
-  name: string
-  season: string
-  number: string
-  image: ApiImage
-  summary: string
-}
+import { IEpisode } from '../../types'
 
 export interface IEpisodeListState {
   readonly payload: IEpisode[]

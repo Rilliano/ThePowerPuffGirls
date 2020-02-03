@@ -9,12 +9,11 @@ import { IMainInfo } from './stateManagement/reducers/mainInfoReducer'
 // Components
 import Header from './components/Header'
 import Home from './pageTypes/Home'
+import EpisodeDetail from './pageTypes/EpisodeDetail'
 
 // Styles
 import './App.css'
 import GlobalStyle from './styles'
-
-const Episode = () => <div>episode</div>
 
 interface IProps {
   mainInfo: IMainInfo | undefined
@@ -32,19 +31,13 @@ const App: React.FC<IProps> = ({ mainInfo }) => {
               <li>
                 <Link to="/">Home</Link>
               </li>
-              <li>
-                <Link to="/episode/1">First Product</Link>
-              </li>
-              <li>
-                <Link to="/episode/2">Second Product</Link>
-              </li>
             </ul>
           </nav>
         </>
       )}
 
       <Route path="/" exact component={Home} />
-      <Route path="/episode/:id" component={Episode} />
+      <Route path="/episode/:id" component={EpisodeDetail} />
     </Router>
   )
 }
