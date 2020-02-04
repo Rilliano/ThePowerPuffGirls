@@ -2,6 +2,9 @@
 import { createGlobalStyle } from 'styled-components'
 import styledNormalize from 'styled-normalize'
 
+// Styles
+import { lightGrey } from './colors'
+
 const GlobalStyle = createGlobalStyle`
   ${styledNormalize};
 
@@ -10,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    background-color: #f2f2f2;
+    background-color: ${lightGrey};
 
     @media all and (-ms-high-contrast:none) {
       overflow-x: hidden;

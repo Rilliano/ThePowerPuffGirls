@@ -8,8 +8,8 @@ import { getEpisodeList } from '../stateManagement/actions'
 import { IAppState } from '../stateManagement/reducers'
 
 // Components
-import RichText from '../components/RichText'
 import EpisodeList from '../components/EpisodeList'
+import SummaryBlock from '../components/SummaryBlock'
 
 // Types
 import { IEpisode } from '../types'
@@ -32,13 +32,11 @@ const Home: React.FC<IHomeProps> = ({ mainInfo, episodeList }) => {
     <Container>
       {mainInfo && (
         <InnerContainer>
-          <Title>Show: {mainInfo.name}</Title>
-          <SummeryContainer>
-            <Summery text={mainInfo.summary} />
-            <ImageContainer>
-              <Image src={mainInfo.image.original} />
-            </ImageContainer>
-          </SummeryContainer>
+          <SummaryBlock
+            title={`Show: ${mainInfo.name}`}
+            description={mainInfo.summary}
+            imageSrc={mainInfo.image && mainInfo.image.original}
+          />
           {episodeList && (
             <EpisodeList title="Episode List" episodeList={episodeList} />
           )}
@@ -54,35 +52,6 @@ const mapStateToProps = (store: IAppState) => {
     episodeList: store.episodeListState.payload
   }
 }
-
-const Title = styled.h2`
-  margin-top: 0;
-  margin-bottom: 20px;
-`
-const Summery = styled(RichText)`
-  line-height: 1.6;
-  margin-right: 30px;
-`
-
-const ImageContainer = styled.div`
-  display: flex;
-`
-
-const SummeryContainer = styled.div`
-  background-color: white;
-  padding: 20px;
-  display: flex;
-  margin-bottom: 20px;
-`
-
-const Image = styled.div<{ src: string }>`
-  background-image: ${({ src }) => src && `url('${src}')`};
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background-size: cover;
-  background-position: top center;
-`
 
 const InnerContainer = styled.div`
   max-width: 900px;
