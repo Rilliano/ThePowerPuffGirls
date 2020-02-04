@@ -1,9 +1,12 @@
 import { Reducer } from 'redux'
 
+// Action Types
 import {
   SingleEpisodeListActionTypes,
   ISingleEpisodeAction
 } from '../actions/singleEpisodeListAction'
+
+// Types
 import { IEpisode } from '../../types'
 
 export interface ISingleEpisodeListState {
