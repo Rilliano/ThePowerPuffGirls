@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom'
 // Types
 import { IEpisode } from '../types'
 
+// Styles
+import { lightGrey, pink, white, black } from '../styles/colors'
+
 interface IEpisodeListProps {
   title: string
   episodeList: IEpisode[]
@@ -21,7 +24,7 @@ const EpisodeList: React.FC<IEpisodeListProps> = ({ title, episodeList }) => (
             <TextContainer>
               <ShowTitle>Show: {episode.name}</ShowTitle>
               <MetaData>
-                Season: {episode.season} | Number: {episode.number}
+                Season: {episode.season} | Episode: {episode.number}
               </MetaData>
             </TextContainer>
           </StyledLink>
@@ -32,11 +35,11 @@ const EpisodeList: React.FC<IEpisodeListProps> = ({ title, episodeList }) => (
 )
 
 const MetaData = styled.span`
-  color: black;
+  color: ${black};
 `
 
 const ShowTitle = styled.h3`
-  color: pink;
+  color: ${pink};
   margin-top: 0;
   margin-bottom: 10px;
 `
@@ -70,14 +73,14 @@ const Title = styled.h2`
 `
 
 const StyledLink = styled(Link)`
-  background-color: white;
+  background-color: ${white};
   padding: 20px;
   display: flex;
   width: 100%;
   box-sizing: border-box;
 
   &:hover {
-    background-color: lightgrey;
+    background-color: ${lightGrey};
   }
 `
 

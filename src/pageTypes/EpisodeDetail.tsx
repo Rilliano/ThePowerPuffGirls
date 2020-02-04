@@ -7,11 +7,14 @@ import styled from 'styled-components'
 import { getSingleEpisode } from '../stateManagement/actions'
 import { IAppState } from '../stateManagement/reducers'
 
+// Components
+import SummaryBlock from '../components/SummaryBlock'
+
+// Styles
+import { maxWidth } from '../styles/grid'
+
 // Types
 import { IEpisode } from '../types'
-
-// Components
-import RichText from '../components/RichText'
 
 interface IMatchParams {
   id: string
@@ -30,11 +33,14 @@ const EpisodeDetail: React.FC<IEpisodeDetailProps> = ({
   const episodeId = Number(match.params.id)
   const dispatch = useDispatch()
 
+  // Get Episode data from the episodeList or from the singleEpisodeList in the Redux store
   const getEpisode =
     episodeList.find((episode: IEpisode) => episode.id === episodeId) ||
     singleEpisodeList.find((episode: IEpisode) => episode.id === episodeId)
 
   useEffect(() => {
+    // If there is no episode found in the episodeList or singleEpisodeList dispatch an action to get the single episode
+    // NOTE there is no need to fetch the whole episode list, because that is a performace/bandwidth waste
     if (getEpisode === undefined) {
       dispatch(getSingleEpisode(episodeId))
     }
@@ -44,29 +50,24 @@ const EpisodeDetail: React.FC<IEpisodeDetailProps> = ({
     <Container>
       <InnerContainer>
         {getEpisode && (
-          <>
-            {getEpisode.name}
-            {getEpisode.summary && <Summery text={getEpisode.summary} />}
-          </>
+          <SummaryBlock
+            title={`Episode: ${getEpisode.name}`}
+            description={getEpisode.summary}
+            imageSrc={getEpisode.image && getEpisode.image.original}
+          />
         )}
       </InnerContainer>
     </Container>
   )
 }
 
-const mapStateToProps = (store: IAppState) => {
-  return {
-    episodeList: store.episodeListState.payload,
-    singleEpisodeList: store.singleEpisodeListState.payload
-  }
-}
-
-const Summery = styled(RichText)`
-  margin-bottom: 20px;
-`
+const mapStateToProps = (store: IAppState) => ({
+  episodeList: store.episodeListState.payload,
+  singleEpisodeList: store.singleEpisodeListState.payload
+})
 
 const InnerContainer = styled.div`
-  max-width: 900px;
+  max-width: ${maxWidth}px;
   width: 100%;
   display: flex;
   flex-direction: column;
