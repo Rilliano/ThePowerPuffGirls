@@ -1,5 +1,6 @@
 import { Reducer } from 'redux'
 
+// Action Types
 import { MainInfoActionTypes, IMainInfoAction } from '../actions/mainInfoAction'
 
 export interface IImage {

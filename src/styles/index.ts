@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+    background-color: #f2f2f2;
 
     @media all and (-ms-high-contrast:none) {
       overflow-x: hidden;

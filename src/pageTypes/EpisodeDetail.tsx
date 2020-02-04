@@ -3,7 +3,7 @@ import { connect, useDispatch } from 'react-redux'
 import { RouteComponentProps } from 'react-router-dom'
 import styled from 'styled-components'
 
-// stateManagement
+// StateManagement
 import { getSingleEpisode } from '../stateManagement/actions'
 import { IAppState } from '../stateManagement/reducers'
 
@@ -38,7 +38,7 @@ const EpisodeDetail: React.FC<IEpisodeDetailProps> = ({
     if (getEpisode === undefined) {
       dispatch(getSingleEpisode(episodeId))
     }
-  }, [dispatch, getEpisode])
+  }, [dispatch, getEpisode, episodeId])
 
   return (
     <Container>
