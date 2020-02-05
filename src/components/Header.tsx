@@ -56,6 +56,8 @@ const Container = styled.header<{ bgImg: string }>`
     content: '';
     background-color: ${black};
     opacity: 0.7;
+    left: 0;
+    top: 0;
     position: absolute;
     width: 100%;
     height: 100%;
