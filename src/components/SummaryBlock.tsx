@@ -66,6 +66,7 @@ const SummaryContainer = styled.div`
 const Image = styled.div<{ src: string }>`
   background-image: ${({ src }) => src && `url('${src}')`};
   width: 200px;
+  min-width: 200px;
   height: 200px;
   border-radius: 50%;
   background-size: cover;
