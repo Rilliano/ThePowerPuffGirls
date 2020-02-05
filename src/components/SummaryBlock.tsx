@@ -50,6 +50,7 @@ const ImageContainer = styled.div`
 const SummaryContainer = styled.div`
   background-color: ${white};
   width: 100%;
+  box-sizing: border-box;
   padding: 20px;
   display: flex;
   margin-bottom: 60px;
