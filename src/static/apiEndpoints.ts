@@ -1,4 +1,4 @@
-const baseUrl = 'http://api.tvmaze.com/'
+const baseUrl = 'https://api.tvmaze.com/'
 const showId = 6771
 
 const apiEndpoints = {
