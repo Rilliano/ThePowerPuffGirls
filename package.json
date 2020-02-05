@@ -60,5 +60,9 @@
     "tslint-plugin-prettier": "^2.1.0",
     "typescript": "^3.7.5",
     "typescript-styled-plugin": "^0.15.0"
+  },
+  "author": {
+    "name": "Rilliano Mertodikromo",
+    "email": "Rilliano_7@hotmail.nl"
   }
 }
