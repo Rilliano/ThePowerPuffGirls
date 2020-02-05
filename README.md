@@ -1,12 +1,10 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/3d978c11-dd5f-4bca-8434-2fd94caa2bc6/deploy-status)](https://app.netlify.com/sites/thepowerpuffgirls/deploys)
 
-You are looking at the repository for The Powerpuff Girls fan site It is hosted on [Netlify](https://netlify.com/) .
-Preview the app here: [https://thepowerpuffgirls.netlify.com/](https://thepowerpuffgirls.netlify.com/)
+You are looking at the repository for The Powerpuff Girls fan site .It is hosted on [Netlify](https://netlify.com/) .
+U can preview the app here: [https://thepowerpuffgirls.netlify.com/](https://thepowerpuffgirls.netlify.com/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## 🚀 Quick start ?
@@ -33,6 +31,7 @@ If you not install these plugins you might only see code hygiene errors when you
 ## 🌈 Opportunities for this app
 
 - Add `404 page`
+- Add `Split the episode list into seasons`
 - Add `loading states`
 - Add `page transitions`
 - Add `unit test`
