@@ -4,13 +4,14 @@ import styled from 'styled-components'
 // Components
 import RichText from './RichText'
 
-interface ISummaryBlockProps {
-  title: string
-  description?: string
-  imageSrc?: string
-}
+// Styles
+import { mq } from '../styles/mediaQueries'
+import { white } from '../styles/colors'
 
-const SummaryBlock: React.FC<ISummaryBlockProps> = ({
+// Types
+import { ISummaryBlock } from '../types'
+
+const SummaryBlock: React.FC<ISummaryBlock> = ({
   title,
   description,
   imageSrc
@@ -31,10 +32,15 @@ const SummaryBlock: React.FC<ISummaryBlockProps> = ({
 const Title = styled.h2`
   margin-top: 0;
   margin-bottom: 20px;
+  width: 100%;
 `
 const Summary = styled(RichText)`
   line-height: 1.6;
-  margin-right: 30px;
+  margin: 0 0 30px;
+
+  ${mq.from.breakpoint.M`
+    margin: 0 30px 0;
+  `}
 `
 
 const ImageContainer = styled.div`
@@ -42,10 +48,18 @@ const ImageContainer = styled.div`
 `
 
 const SummaryContainer = styled.div`
-  background-color: white;
+  background-color: ${white};
+  width: 100%;
   padding: 20px;
   display: flex;
   margin-bottom: 60px;
+  flex-direction: column;
+  align-items: center;
+
+  ${mq.from.breakpoint.M`
+    flex-direction: row;
+    justify-content: space-between;
+  `}
 `
 
 const Image = styled.div<{ src: string }>`

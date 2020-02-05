@@ -6,8 +6,8 @@ export interface IApiImage {
 export interface IEpisode {
   id: number
   name: string
-  season: string
-  number: string
+  season: number
+  number: number
   image: IApiImage
   summary: string
 }
@@ -15,4 +15,10 @@ export interface IEpisode {
 export interface IHeader {
   name: string
   image: IApiImage
+}
+
+export interface ISummaryBlock {
+  title: string
+  description?: string
+  imageSrc?: string
 }

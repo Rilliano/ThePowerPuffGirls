@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom'
 import { IEpisode } from '../types'
 
 // Styles
-import { lightGrey, pink, white, black } from '../styles/colors'
+import { pink, white, black } from '../styles/colors'
+import { transitions } from '../styles/animations'
 
 interface IEpisodeListProps {
   title: string
@@ -50,7 +51,7 @@ const TextContainer = styled.div`
 
 const Image = styled.div<{ bgImg: string }>`
   background-image: ${({ bgImg }) => bgImg && `url('${bgImg}')`};
-  width: 80px;
+  min-width: 80px;
   height: 80px;
   border-radius: 50%;
   background-size: cover;
@@ -78,9 +79,14 @@ const StyledLink = styled(Link)`
   display: flex;
   width: 100%;
   box-sizing: border-box;
+  transition: background-color ${transitions.fast};
 
   &:hover {
-    background-color: ${lightGrey};
+    background-color: ${black};
+
+    ${ShowTitle}, ${MetaData} {
+      color: ${white};
+    }
   }
 `
 

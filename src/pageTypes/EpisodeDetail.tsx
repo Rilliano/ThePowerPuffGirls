@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import { connect, useDispatch } from 'react-redux'
-import { RouteComponentProps } from 'react-router-dom'
 import styled from 'styled-components'
+import { connect, useDispatch } from 'react-redux'
+import { RouteComponentProps, Link } from 'react-router-dom'
 
 // StateManagement
 import { getSingleEpisode } from '../stateManagement/actions'
@@ -13,8 +13,13 @@ import SummaryBlock from '../components/SummaryBlock'
 // Styles
 import { maxWidth } from '../styles/grid'
 
+// Utils
+import { addZeroBeforeSingleDigit } from '../utils'
+
 // Types
 import { IEpisode } from '../types'
+import { white, black, pink } from '../styles/colors'
+import { transitions } from '../styles/animations'
 
 interface IMatchParams {
   id: string
@@ -51,34 +56,56 @@ const EpisodeDetail: React.FC<IEpisodeDetailProps> = ({
       <InnerContainer>
         {getEpisode && (
           <SummaryBlock
-            title={`Episode: ${getEpisode.name}`}
+            title={`S${addZeroBeforeSingleDigit(
+              getEpisode.season
+            )}E${addZeroBeforeSingleDigit(getEpisode.number)}: ${
+              getEpisode.name
+            }`}
             description={getEpisode.summary}
             imageSrc={getEpisode.image && getEpisode.image.original}
           />
         )}
+
+        <HomeBtn to="/">Go To Home</HomeBtn>
       </InnerContainer>
     </Container>
   )
 }
 
-const mapStateToProps = (store: IAppState) => ({
-  episodeList: store.episodeListState.payload,
-  singleEpisodeList: store.singleEpisodeListState.payload
-})
+const HomeBtn = styled(Link)`
+  display: inline-block;
+  padding: 20px 50px;
+  color: ${white};
+  font-weight: bold;
+  border-radius: 20px;
+  background-color: ${pink};
+  transition: color ${transitions.fast}, background-color ${transitions.fast};
+
+  &:hover {
+    color: ${black};
+    background-color: ${white};
+  }
+`
 
 const InnerContainer = styled.div`
   max-width: ${maxWidth}px;
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
 `
 
-const Container = styled.header`
+const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  padding: 40px 20px;
 `
+
+const mapStateToProps = (store: IAppState) => ({
+  episodeList: store.episodeListState.payload,
+  singleEpisodeList: store.singleEpisodeListState.payload
+})
 
 export default connect(mapStateToProps)(EpisodeDetail)

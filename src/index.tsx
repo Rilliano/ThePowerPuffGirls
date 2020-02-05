@@ -1,11 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
+import { Provider } from 'react-redux'
+import { Store } from 'redux'
 import * as serviceWorker from './serviceWorker'
 
 // State Management
-import { Provider } from 'react-redux'
-import { Store } from 'redux'
 import configureStore from './stateManagement/Store'
 import { getMainInfo } from './stateManagement/actions'
 import { IAppState } from './stateManagement/reducers'
