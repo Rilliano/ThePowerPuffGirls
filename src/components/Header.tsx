@@ -38,13 +38,13 @@ const Title = styled.h1`
 `
 
 const Container = styled.header<{ bgImg: string }>`
+  background-image: ${({ bgImg }) => bgImg && `url('${bgImg}')`};
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${black};
   flex-direction: row;
+  background-color: ${black};
   padding: 40px 20px;
-  background-image: ${({ bgImg }) => bgImg && `url('${bgImg}')`};
   position: relative;
   min-height: 200px;
 
@@ -54,7 +54,7 @@ const Container = styled.header<{ bgImg: string }>`
 
   &:after {
     content: '';
-    background-color: black;
+    background-color: ${black};
     opacity: 0.7;
     position: absolute;
     width: 100%;

@@ -14,7 +14,6 @@ import Home from './pageTypes/Home'
 import EpisodeDetail from './pageTypes/EpisodeDetail'
 
 // Styles
-import './App.css'
 import GlobalStyle from './styles'
 
 interface IProps {

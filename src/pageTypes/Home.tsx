@@ -11,6 +11,9 @@ import { IAppState } from '../stateManagement/reducers'
 import EpisodeList from '../components/EpisodeList'
 import SummaryBlock from '../components/SummaryBlock'
 
+// Styles
+import { maxWidth } from '../styles/grid'
+
 // Types
 import { IEpisode } from '../types'
 
@@ -23,6 +26,7 @@ const Home: React.FC<IHomeProps> = ({ mainInfo, episodeList }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    // First check if there are items in the episodeList in the redux store, If the list is empty, dispatch the getEpisodeList action to fetch the episode list
     if (episodeList.length < 1) {
       dispatch(getEpisodeList())
     }
@@ -46,26 +50,26 @@ const Home: React.FC<IHomeProps> = ({ mainInfo, episodeList }) => {
   )
 }
 
-const mapStateToProps = (store: IAppState) => {
-  return {
-    mainInfo: store.mainInfoState.payload,
-    episodeList: store.episodeListState.payload
-  }
-}
-
 const InnerContainer = styled.div`
-  max-width: 900px;
+  max-width: ${maxWidth}px;
   width: 100%;
   display: flex;
   flex-direction: column;
 `
 
-const Container = styled.header`
+const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
   padding: 40px 20px;
 `
+
+const mapStateToProps = (store: IAppState) => {
+  return {
+    mainInfo: store.mainInfoState.payload,
+    episodeList: store.episodeListState.payload
+  }
+}
 
 export default connect(mapStateToProps)(Home)
